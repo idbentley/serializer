@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>
+    <class name="Speakeasy\Serializer\Tests\Fixtures\ParentEmitWithNullChild">
+        <property name="c" type="string" />
+        <property name="c" type="string" />
+        <property name="child" emit-when-null="true" />
+    </class>
+</serializer>

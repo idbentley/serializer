@@ -2,10 +2,17 @@
 
 declare(strict_types=1);
 
-namespace JMS\Serializer\Tests\Fixtures\DoctrinePHPCR;
+namespace Speakeasy\Serializer\Tests\Fixtures\DoctrinePHPCR;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCRODM;
+<<<<<<< Updated upstream
 use JMS\Serializer\Annotation\SerializedName;
+=======
+use Doctrine\ODM\PHPCR\Mapping\Attributes\Document;
+use Doctrine\ODM\PHPCR\Mapping\Attributes\Field;
+use Doctrine\ODM\PHPCR\Mapping\Attributes\Id;
+use Speakeasy\Serializer\Annotation\SerializedName;
+>>>>>>> Stashed changes
 
 /** @PHPCRODM\Document */
 class Author

@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace JMS\Serializer\GraphNavigator;
+namespace Speakeasy\Serializer\GraphNavigator;
 
+<<<<<<< Updated upstream
 use JMS\Serializer\Accessor\AccessorStrategyInterface;
 use JMS\Serializer\Construction\ObjectConstructorInterface;
 use JMS\Serializer\DeserializationContext;
@@ -25,6 +26,28 @@ use JMS\Serializer\Handler\HandlerRegistryInterface;
 use JMS\Serializer\Metadata\ClassMetadata;
 use JMS\Serializer\NullAwareVisitorInterface;
 use JMS\Serializer\Visitor\DeserializationVisitorInterface;
+=======
+use Speakeasy\Serializer\Accessor\AccessorStrategyInterface;
+use Speakeasy\Serializer\Construction\ObjectConstructorInterface;
+use Speakeasy\Serializer\DeserializationContext;
+use Speakeasy\Serializer\EventDispatcher\EventDispatcher;
+use Speakeasy\Serializer\EventDispatcher\EventDispatcherInterface;
+use Speakeasy\Serializer\EventDispatcher\ObjectEvent;
+use Speakeasy\Serializer\EventDispatcher\PreDeserializeEvent;
+use Speakeasy\Serializer\Exception\ExpressionLanguageRequiredException;
+use Speakeasy\Serializer\Exception\LogicException;
+use Speakeasy\Serializer\Exception\NotAcceptableException;
+use Speakeasy\Serializer\Exception\RuntimeException;
+use Speakeasy\Serializer\Exception\SkipHandlerException;
+use Speakeasy\Serializer\Exclusion\ExpressionLanguageExclusionStrategy;
+use Speakeasy\Serializer\Expression\ExpressionEvaluatorInterface;
+use Speakeasy\Serializer\GraphNavigator;
+use Speakeasy\Serializer\GraphNavigatorInterface;
+use Speakeasy\Serializer\Handler\HandlerRegistryInterface;
+use Speakeasy\Serializer\Metadata\ClassMetadata;
+use Speakeasy\Serializer\NullAwareVisitorInterface;
+use Speakeasy\Serializer\Visitor\DeserializationVisitorInterface;
+>>>>>>> Stashed changes
 use Metadata\MetadataFactoryInterface;
 
 /**

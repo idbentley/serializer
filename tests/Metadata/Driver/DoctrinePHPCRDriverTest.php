@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace JMS\Serializer\Tests\Metadata\Driver;
+namespace Speakeasy\Serializer\Tests\Metadata\Driver;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\ODM\PHPCR\Configuration;
 use Doctrine\ODM\PHPCR\DocumentManager;
 use Doctrine\ODM\PHPCR\Mapping\Driver\AnnotationDriver as DoctrinePHPCRDriver;
 use Doctrine\Persistence\ManagerRegistry;
+<<<<<<< Updated upstream
 use JMS\Serializer\Metadata\Driver\AnnotationDriver;
 use JMS\Serializer\Metadata\Driver\DoctrinePHPCRTypeDriver;
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
@@ -16,6 +17,16 @@ use JMS\Serializer\Tests\Fixtures\BlogPost;
 use JMS\Serializer\Tests\Fixtures\DoctrinePHPCR\Author;
 use JMS\Serializer\Tests\Fixtures\DoctrinePHPCR\BlogPost as BlogPostPHPCR;
 use JMS\Serializer\Tests\Fixtures\DoctrinePHPCR\Comment;
+=======
+use Speakeasy\Serializer\Metadata\Driver\AnnotationDriver;
+use Speakeasy\Serializer\Metadata\Driver\AnnotationOrAttributeDriver;
+use Speakeasy\Serializer\Metadata\Driver\DoctrinePHPCRTypeDriver;
+use Speakeasy\Serializer\Naming\IdenticalPropertyNamingStrategy;
+use Speakeasy\Serializer\Tests\Fixtures\BlogPost;
+use Speakeasy\Serializer\Tests\Fixtures\DoctrinePHPCR\Author;
+use Speakeasy\Serializer\Tests\Fixtures\DoctrinePHPCR\BlogPost as BlogPostPHPCR;
+use Speakeasy\Serializer\Tests\Fixtures\DoctrinePHPCR\Comment;
+>>>>>>> Stashed changes
 use PHPCR\SessionInterface;
 use PHPUnit\Framework\TestCase;
 

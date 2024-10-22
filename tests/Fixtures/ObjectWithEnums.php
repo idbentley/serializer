@@ -2,42 +2,68 @@
 
 declare(strict_types=1);
 
-namespace JMS\Serializer\Tests\Fixtures;
+namespace Speakeasy\Serializer\Tests\Fixtures;
 
-use JMS\Serializer\Annotation as Serializer;
-use JMS\Serializer\Tests\Fixtures\Enum\BackedSuit;
-use JMS\Serializer\Tests\Fixtures\Enum\BackedSuitInt;
-use JMS\Serializer\Tests\Fixtures\Enum\Suit;
+use Speakeasy\Serializer\Annotation as Serializer;
+use Speakeasy\Serializer\Tests\Fixtures\Enum\BackedSuit;
+use Speakeasy\Serializer\Tests\Fixtures\Enum\BackedSuitInt;
+use Speakeasy\Serializer\Tests\Fixtures\Enum\Suit;
 
 class ObjectWithEnums
 {
     /**
+<<<<<<< Updated upstream
      * @Serializer\Type("enum<'JMS\Serializer\Tests\Fixtures\Enum\Suit', 'name'>")
+=======
+     * @Serializer\Type("enum<Speakeasy\Serializer\Tests\Fixtures\Enum\Suit, 'name'>")
+>>>>>>> Stashed changes
      */
     public Suit $ordinary;
 
     /**
+<<<<<<< Updated upstream
      * @Serializer\Type("enum<'JMS\Serializer\Tests\Fixtures\Enum\BackedSuit', 'value'>")
+=======
+     * @Serializer\Type("enum<Speakeasy\Serializer\Tests\Fixtures\Enum\BackedSuit, 'value'>")
+>>>>>>> Stashed changes
      */
     public BackedSuit $backedValue;
 
     /**
+<<<<<<< Updated upstream
      * @Serializer\Type("enum<'JMS\Serializer\Tests\Fixtures\Enum\BackedSuit'>")
+=======
+     * Deprecated, remove single quote around type with 4.0.
+     *
+     * @Serializer\Type("enum<'Speakeasy\Serializer\Tests\Fixtures\Enum\BackedSuit'>")
+>>>>>>> Stashed changes
      */
     public BackedSuit $backedWithoutParam;
 
     /**
+<<<<<<< Updated upstream
      * @Serializer\Type("array<enum<'JMS\Serializer\Tests\Fixtures\Enum\Suit'>>")
+=======
+     * @Serializer\Type("array<enum<Speakeasy\Serializer\Tests\Fixtures\Enum\Suit>>")
+>>>>>>> Stashed changes
      */
     public array $ordinaryArray;
 
     /**
+<<<<<<< Updated upstream
      * @Serializer\Type("array<enum<'JMS\Serializer\Tests\Fixtures\Enum\BackedSuit', 'value'>>")
+=======
+     * @Serializer\Type("array<enum<Speakeasy\Serializer\Tests\Fixtures\Enum\BackedSuit, 'value'>>")
+>>>>>>> Stashed changes
      */
     public array $backedArray;
 
     /**
+<<<<<<< Updated upstream
      * @Serializer\Type("array<enum<'JMS\Serializer\Tests\Fixtures\Enum\BackedSuit'>>")
+=======
+     * @Serializer\Type("array<enum<Speakeasy\Serializer\Tests\Fixtures\Enum\BackedSuit>>")
+>>>>>>> Stashed changes
      */
     public array $backedArrayWithoutParam;
 

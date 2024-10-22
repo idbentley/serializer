@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace JMS\Serializer\Tests\Serializer;
+namespace Speakeasy\Serializer\Tests\Serializer;
 
+<<<<<<< Updated upstream
 use JMS\Serializer\Context;
 use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\EventDispatcher\Event;
@@ -29,6 +30,30 @@ use JMS\Serializer\Tests\Fixtures\TypedProperties\ConstructorPromotion\Vase;
 use JMS\Serializer\Tests\Fixtures\TypedProperties\UnionTypedProperties;
 use JMS\Serializer\Visitor\Factory\JsonSerializationVisitorFactory;
 use JMS\Serializer\Visitor\SerializationVisitorInterface;
+=======
+use Speakeasy\Serializer\Context;
+use Speakeasy\Serializer\EventDispatcher\Event;
+use Speakeasy\Serializer\EventDispatcher\EventSubscriberInterface;
+use Speakeasy\Serializer\EventDispatcher\ObjectEvent;
+use Speakeasy\Serializer\Exception\NonVisitableTypeException;
+use Speakeasy\Serializer\Exception\RuntimeException;
+use Speakeasy\Serializer\GraphNavigatorInterface;
+use Speakeasy\Serializer\Metadata\Driver\TypedPropertiesDriver;
+use Speakeasy\Serializer\SerializationContext;
+use Speakeasy\Serializer\Tests\Fixtures\Author;
+use Speakeasy\Serializer\Tests\Fixtures\AuthorList;
+use Speakeasy\Serializer\Tests\Fixtures\DiscriminatedAuthor;
+use Speakeasy\Serializer\Tests\Fixtures\DiscriminatedComment;
+use Speakeasy\Serializer\Tests\Fixtures\FirstClassMapCollection;
+use Speakeasy\Serializer\Tests\Fixtures\ObjectWithEmptyArrayAndHash;
+use Speakeasy\Serializer\Tests\Fixtures\ObjectWithInlineArray;
+use Speakeasy\Serializer\Tests\Fixtures\ObjectWithObjectProperty;
+use Speakeasy\Serializer\Tests\Fixtures\Tag;
+use Speakeasy\Serializer\Tests\Fixtures\TypedProperties\ComplexDiscriminatedUnion;
+use Speakeasy\Serializer\Tests\Fixtures\TypedProperties\UnionTypedProperties;
+use Speakeasy\Serializer\Visitor\Factory\JsonSerializationVisitorFactory;
+use Speakeasy\Serializer\Visitor\SerializationVisitorInterface;
+>>>>>>> Stashed changes
 use PHPUnit\Framework\Attributes\DataProvider;
 
 class JsonSerializationTest extends BaseSerializationTestCase
@@ -257,7 +282,7 @@ class JsonSerializationTest extends BaseSerializationTestCase
         $content = self::getContent('object_with_object_property_no_array_to_author');
 
         $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('Invalid data "baz" (string), expected "JMS\Serializer\Tests\Fixtures\Author".');
+        $this->expectExceptionMessage('Invalid data "baz" (string), expected "Speakeasy\Serializer\Tests\Fixtures\Author".');
 
         $this->deserialize($content, ObjectWithObjectProperty::class);
     }
@@ -358,16 +383,16 @@ class JsonSerializationTest extends BaseSerializationTestCase
         ];
 
         self::assertEquals('{"jim":{"full_name":"Jim"},"mark":{"full_name":"Mark"}}', $this->serializer->serialize($data, $this->getFormat(), SerializationContext::create()->setInitialType('array')));
-        self::assertEquals('[{"full_name":"Jim"},{"full_name":"Mark"}]', $this->serializer->serialize($data, $this->getFormat(), SerializationContext::create()->setInitialType('array<JMS\Serializer\Tests\Fixtures\Author>')));
-        self::assertEquals('{"jim":{"full_name":"Jim"},"mark":{"full_name":"Mark"}}', $this->serializer->serialize($data, $this->getFormat(), SerializationContext::create()->setInitialType('array<string,JMS\Serializer\Tests\Fixtures\Author>')));
+        self::assertEquals('[{"full_name":"Jim"},{"full_name":"Mark"}]', $this->serializer->serialize($data, $this->getFormat(), SerializationContext::create()->setInitialType('array<Speakeasy\Serializer\Tests\Fixtures\Author>')));
+        self::assertEquals('{"jim":{"full_name":"Jim"},"mark":{"full_name":"Mark"}}', $this->serializer->serialize($data, $this->getFormat(), SerializationContext::create()->setInitialType('array<string,Speakeasy\Serializer\Tests\Fixtures\Author>')));
 
         $data = [
             $author1,
             $author2,
         ];
         self::assertEquals('[{"full_name":"Jim"},{"full_name":"Mark"}]', $this->serializer->serialize($data, $this->getFormat(), SerializationContext::create()->setInitialType('array')));
-        self::assertEquals('{"0":{"full_name":"Jim"},"1":{"full_name":"Mark"}}', $this->serializer->serialize($data, $this->getFormat(), SerializationContext::create()->setInitialType('array<int,JMS\Serializer\Tests\Fixtures\Author>')));
-        self::assertEquals('{"0":{"full_name":"Jim"},"1":{"full_name":"Mark"}}', $this->serializer->serialize($data, $this->getFormat(), SerializationContext::create()->setInitialType('array<string,JMS\Serializer\Tests\Fixtures\Author>')));
+        self::assertEquals('{"0":{"full_name":"Jim"},"1":{"full_name":"Mark"}}', $this->serializer->serialize($data, $this->getFormat(), SerializationContext::create()->setInitialType('array<int,Speakeasy\Serializer\Tests\Fixtures\Author>')));
+        self::assertEquals('{"0":{"full_name":"Jim"},"1":{"full_name":"Mark"}}', $this->serializer->serialize($data, $this->getFormat(), SerializationContext::create()->setInitialType('array<string,Speakeasy\Serializer\Tests\Fixtures\Author>')));
     }
 
     public static function getTypeHintedArrays()
@@ -430,7 +455,7 @@ class JsonSerializationTest extends BaseSerializationTestCase
 
             [[$c2], '[{"foo":"bar"}]', SerializationContext::create()->setInitialType('array<stdClass>')],
 
-            [[$tag], '[{"name":"tag"}]', SerializationContext::create()->setInitialType('array<JMS\Serializer\Tests\Fixtures\Tag>')],
+            [[$tag], '[{"name":"tag"}]', SerializationContext::create()->setInitialType('array<Speakeasy\Serializer\Tests\Fixtures\Tag>')],
 
             [[$c1], '{"0":{}}', SerializationContext::create()->setInitialType('array<integer,stdClass>')],
             [[$c2], '{"0":{"foo":"bar"}}', SerializationContext::create()->setInitialType('array<integer,stdClass>')],
@@ -438,7 +463,7 @@ class JsonSerializationTest extends BaseSerializationTestCase
             [[$c3], '{"0":{"foo":{"name":"tag"}}}', SerializationContext::create()->setInitialType('array<integer,stdClass>')],
             [[$c3], '[{"foo":{"name":"tag"}}]', SerializationContext::create()->setInitialType('array<stdClass>')],
 
-            [[$tag], '{"0":{"name":"tag"}}', SerializationContext::create()->setInitialType('array<integer,JMS\Serializer\Tests\Fixtures\Tag>')],
+            [[$tag], '{"0":{"name":"tag"}}', SerializationContext::create()->setInitialType('array<integer,Speakeasy\Serializer\Tests\Fixtures\Tag>')],
         ];
     }
 

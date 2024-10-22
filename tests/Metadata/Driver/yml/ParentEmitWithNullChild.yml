@@ -1,0 +1,8 @@
+Speakeasy\Serializer\Tests\Fixtures\ParentEmitWithNullChild:
+    properties:
+        c:
+          type: string
+        d:
+          type: string
+        child:
+          emit_when_null: true
